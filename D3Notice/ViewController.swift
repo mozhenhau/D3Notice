@@ -10,16 +10,34 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+    @IBAction func clickClearNotcie(sender: AnyObject) {
+        clearAllNotice()
+    }
+    
+    @IBAction func clickShowSuc(sender: AnyObject) {
+        showNoticeSuc("suc", time: D3Notice.longTime, autoClear: false)
+    }
+    
+
+    @IBAction func clickShowSucAutoDisapear(sender: AnyObject) {
+        showNoticeSuc("suc")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func clickShowErr(sender: AnyObject) {
+        showNoticeErr("err")
     }
-
-
+    
+    @IBAction func clickSowInfo(sender: AnyObject) {
+        showNoticeInfo("info")
+    }
+    
+    @IBAction func clickShowWait(sender: AnyObject) {
+        showNoticeWait()
+    }
+    
+    @IBAction func clickShowText(sender: AnyObject) {
+        showNoticeText("text")
+    }
 }
 
