@@ -34,6 +34,7 @@ D3Notice是用swift写的IOS的自定义AlertView。包括纯文字提示，成�
      
 ###Tips
 配合本人github项目里的D3View可容易实现弹窗动画
+地址：https://github.com/mozhenhau/D3View
 
      
 ##安装使用
