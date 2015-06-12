@@ -16,12 +16,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clickShowSuc(sender: AnyObject) {
-        showNoticeSuc("suc", time: D3Notice.longTime, autoClear: false)
+        showNoticeSuc("suc")
     }
     
 
-    @IBAction func clickShowSucAutoDisapear(sender: AnyObject) {
-        showNoticeSuc("suc")
+    @IBAction func clickShowSucNotDisapear(sender: AnyObject) {
+        showNoticeSuc("suc", time: D3Notice.longTime, autoClear: false)
     }
 
     @IBAction func clickShowErr(sender: AnyObject) {

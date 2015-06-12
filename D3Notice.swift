@@ -4,6 +4,7 @@
 //
 //  Created by mozhenhau on 15/6/11.
 //  Copyright (c) 2015年 mozhenhau. All rights reserved.
+//  显示最后一个
 //
 import Foundation
 import UIKit
@@ -76,17 +77,30 @@ class D3Notice: NSObject {
     private static let waitTag = 98
     static let longTime:NSTimeInterval = 2
     static let shortTime:NSTimeInterval = 1
-    static var windows = Array<UIWindow!>()
+    static var notices = Array<UIView>()
     static let rv = UIApplication.sharedApplication().keyWindow?.subviews.first as! UIView
+    static var window:UIWindow = {
+    var application:UIApplication = UIApplication.sharedApplication()
+    
+    var win:UIWindow? = application.keyWindow
+    if win != nil
+    {
+        return win!
+    }
+    else
+    {
+        return (application.delegate as! AppDelegate).window!
+    }
+    }()
     
     static func clear() {
-        for i in windows {
-            i.hidden = true
+        for i in notices {
+            i.removeFromSuperview()
         }
     }
     
     static func clearWait(){
-        for i in windows {
+        for i in notices {
             if i.tag == waitTag{
                 i.removeFromSuperview()
             }
@@ -95,8 +109,8 @@ class D3Notice: NSObject {
     
     //菊花图
     static func wait(time:NSTimeInterval?,autoClear: Bool) {
+        clear()
         let frame = CGRectMake(0, 0, 78, 78)
-        let window = UIWindow(frame: frame)
         let mainView = UIView(frame: frame)
         mainView.layer.cornerRadius = 12
         mainView.backgroundColor = UIColor(red:0, green:0, blue:0, alpha: 0.8)
@@ -106,11 +120,9 @@ class D3Notice: NSObject {
         ai.startAnimating()
         mainView.addSubview(ai)
         
-        window.windowLevel = UIWindowLevelAlert
-        window.center = rv.center
-        window.hidden = false
+        mainView.center = rv.center
         window.addSubview(mainView)
-        windows.append(window)
+        notices.append(mainView)
         
         time == nil ? longTime : time
         if autoClear {
@@ -120,7 +132,7 @@ class D3Notice: NSObject {
     
     //仅文字
     static func showText(text: String,time:NSTimeInterval,autoClear: Bool) {
-        let window = UIWindow()
+        clear()
         let mainView = UIView()
         mainView.layer.cornerRadius = 12
         mainView.backgroundColor = UIColor(red:0, green:0, blue:0, alpha: 0.8)
@@ -133,18 +145,13 @@ class D3Notice: NSObject {
         label.textColor = UIColor.whiteColor()
         label.sizeToFit()
         mainView.addSubview(label)
+        mainView.frame = CGRectMake(0, 0, label.frame.width + 50 , label.frame.height + 30)
+    
+        mainView.center = rv.center
+        label.center = CGPointMake(mainView.frame.width/2, mainView.frame.height/2)
         
-        let superFrame = CGRectMake(0, 0, label.frame.width + 50 , label.frame.height + 30)
-        window.frame = superFrame
-        mainView.frame = superFrame
-        
-        label.center = mainView.center
-        
-        window.windowLevel = UIWindowLevelAlert
-        window.center = rv.center
-        window.hidden = false
         window.addSubview(mainView)
-        windows.append(window)
+        notices.append(mainView)
         
         if autoClear {
             NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "hideNotice:", userInfo: mainView, repeats: false)
@@ -153,8 +160,8 @@ class D3Notice: NSObject {
     
     //有勾、叉和警告
     static func showNoticeWithText(type: NoticeType,text: String,time:NSTimeInterval,autoClear: Bool) {
+        clear()
         let frame = CGRectMake(0, 0, 90, 90)
-        let window = UIWindow(frame: frame)
         let mainView = UIView(frame: frame)
         mainView.layer.cornerRadius = 10
         mainView.backgroundColor = UIColor(red:0, green:0, blue:0, alpha: 0.7)
@@ -181,11 +188,9 @@ class D3Notice: NSObject {
         label.textAlignment = NSTextAlignment.Center
         mainView.addSubview(label)
         
-        window.windowLevel = UIWindowLevelAlert
-        window.center = rv.center
-        window.hidden = false
+        mainView.center = rv.center
         window.addSubview(mainView)
-        windows.append(window)
+        notices.append(mainView)
         
         if autoClear {
             NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "hideNotice:", userInfo: mainView, repeats: false)
