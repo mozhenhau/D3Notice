@@ -40,7 +40,11 @@ D3Notice是用swift写的IOS的自定义AlertView。包括纯文字提示，成�
 ##安装使用
 ###使用CocoaPods (iOS 8+, OS X 10.9+)
 
-pod 'D3Notice', '~> 1.0.0'
+    platform :ios, '8.0'
+    use_frameworks!
+    
+    pod 'D3Notice', '~> 1.0.0'
+
 swift调用framework需要import D3Notice
 
 ###普通使用
