@@ -39,5 +39,10 @@ class ViewController: UIViewController {
     @IBAction func clickShowText(sender: AnyObject) {
         showNoticeText("text")
     }
+    
+    @IBAction func clickShowSuc2(sender: AnyObject) {
+        D3Notice.showNoticeWithText(NoticeType.success, text: "suc",time: D3Notice.longTime, autoClear: true)
+    }
+    
 }
 

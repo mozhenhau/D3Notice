@@ -79,19 +79,7 @@ class D3Notice: NSObject {
     static let shortTime:NSTimeInterval = 1
     static var notices = Array<UIView>()
     static let rv = UIApplication.sharedApplication().keyWindow?.subviews.first as! UIView
-    static var window:UIWindow = {
-    var application:UIApplication = UIApplication.sharedApplication()
-    
-    var win:UIWindow? = application.keyWindow
-    if win != nil
-    {
-        return win!
-    }
-    else
-    {
-        return (application.delegate as! AppDelegate).window!
-    }
-    }()
+    static var window:UIWindow = UIApplication.sharedApplication().keyWindow!
     
     static func clear() {
         for i in notices {
