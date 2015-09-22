@@ -12,19 +12,8 @@
 		A53113881B2995140087452E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53113861B2995140087452E /* Main.storyboard */; };
 		A531138A1B2995140087452E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A53113891B2995140087452E /* Images.xcassets */; };
 		A531138D1B2995140087452E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A531138B1B2995140087452E /* LaunchScreen.xib */; };
-		A53113991B2995150087452E /* D3NoticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53113981B2995150087452E /* D3NoticeTests.swift */; };
 		A53113A31B2995410087452E /* D3Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53113A21B2995410087452E /* D3Notice.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A53113931B2995150087452E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A53113751B2995140087452E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A531137C1B2995140087452E;
-			remoteInfo = D3Notice;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A531137D1B2995140087452E /* D3Notice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = D3Notice.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,21 +23,11 @@
 		A53113871B2995140087452E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A53113891B2995140087452E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A531138C1B2995140087452E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A53113921B2995150087452E /* D3NoticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = D3NoticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A53113971B2995150087452E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A53113981B2995150087452E /* D3NoticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D3NoticeTests.swift; sourceTree = "<group>"; };
 		A53113A21B2995410087452E /* D3Notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = D3Notice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A531137A1B2995140087452E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A531138F1B2995150087452E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -63,7 +42,6 @@
 			children = (
 				A53113A21B2995410087452E /* D3Notice.swift */,
 				A531137F1B2995140087452E /* D3Notice */,
-				A53113951B2995150087452E /* D3NoticeTests */,
 				A531137E1B2995140087452E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,7 +50,6 @@
 			isa = PBXGroup;
 			children = (
 				A531137D1B2995140087452E /* D3Notice.app */,
-				A53113921B2995150087452E /* D3NoticeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,23 +75,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A53113951B2995150087452E /* D3NoticeTests */ = {
-			isa = PBXGroup;
-			children = (
-				A53113981B2995150087452E /* D3NoticeTests.swift */,
-				A53113961B2995150087452E /* Supporting Files */,
-			);
-			path = D3NoticeTests;
-			sourceTree = "<group>";
-		};
-		A53113961B2995150087452E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A53113971B2995150087452E /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,39 +95,18 @@
 			productReference = A531137D1B2995140087452E /* D3Notice.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A53113911B2995150087452E /* D3NoticeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A531139F1B2995150087452E /* Build configuration list for PBXNativeTarget "D3NoticeTests" */;
-			buildPhases = (
-				A531138E1B2995150087452E /* Sources */,
-				A531138F1B2995150087452E /* Frameworks */,
-				A53113901B2995150087452E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A53113941B2995150087452E /* PBXTargetDependency */,
-			);
-			name = D3NoticeTests;
-			productName = D3NoticeTests;
-			productReference = A53113921B2995150087452E /* D3NoticeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		A53113751B2995140087452E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = mozhenhau;
 				TargetAttributes = {
 					A531137C1B2995140087452E = {
 						CreatedOnToolsVersion = 6.3.2;
-					};
-					A53113911B2995150087452E = {
-						CreatedOnToolsVersion = 6.3.2;
-						TestTargetID = A531137C1B2995140087452E;
 					};
 				};
 			};
@@ -185,7 +124,6 @@
 			projectRoot = "";
 			targets = (
 				A531137C1B2995140087452E /* D3Notice */,
-				A53113911B2995150087452E /* D3NoticeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,13 +136,6 @@
 				A53113881B2995140087452E /* Main.storyboard in Resources */,
 				A531138D1B2995140087452E /* LaunchScreen.xib in Resources */,
 				A531138A1B2995140087452E /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A53113901B2995150087452E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,23 +152,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A531138E1B2995150087452E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A53113991B2995150087452E /* D3NoticeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A53113941B2995150087452E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A531137C1B2995140087452E /* D3Notice */;
-			targetProxy = A53113931B2995150087452E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A53113861B2995140087452E /* Main.storyboard */ = {
@@ -280,6 +195,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -346,6 +262,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = D3Notice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.d3.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -356,41 +273,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = D3Notice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.d3.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		A53113A01B2995150087452E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = D3NoticeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/D3Notice.app/D3Notice";
-			};
-			name = Debug;
-		};
-		A53113A11B2995150087452E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = D3NoticeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/D3Notice.app/D3Notice";
 			};
 			name = Release;
 		};
@@ -413,14 +297,7 @@
 				A531139E1B2995150087452E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		A531139F1B2995150087452E /* Build configuration list for PBXNativeTarget "D3NoticeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A53113A01B2995150087452E /* Debug */,
-				A53113A11B2995150087452E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -37,11 +37,11 @@ extension UIViewController {
     
     //wait 不自动消失
     func showNoticeWait() {
-        D3Notice.wait(D3Notice.longTime,autoClear: false)
+        D3Notice.showWait(D3Notice.longTime,autoClear: false)
     }
     
     func showNoticeWaitAuto(time:NSTimeInterval){
-        D3Notice.wait(time,autoClear: true)
+        D3Notice.showWait(time,autoClear: true)
     }
     
     //text
@@ -78,7 +78,6 @@ class D3Notice: NSObject {
     static let longTime:NSTimeInterval = 2
     static let shortTime:NSTimeInterval = 1
     static var notices = Array<UIView>()
-    static let rv = UIApplication.sharedApplication().keyWindow?.subviews.first as! UIView
     static var window:UIWindow = UIApplication.sharedApplication().keyWindow!
     
     static func clear() {
@@ -96,7 +95,7 @@ class D3Notice: NSObject {
     }
     
     //菊花图
-    static func wait(time:NSTimeInterval,autoClear: Bool) {
+    static func showWait(time:NSTimeInterval,autoClear: Bool) {
         clear()
         let frame = CGRectMake(0, 0, 78, 78)
         let mainView = UIView(frame: frame)
@@ -107,6 +106,7 @@ class D3Notice: NSObject {
         ai.frame = CGRectMake(21, 21, 36, 36)
         ai.startAnimating()
         mainView.addSubview(ai)
+        mainView.tag = waitTag
         addView(mainView, time: time, autoClear: autoClear)
     }
     
@@ -147,8 +147,8 @@ class D3Notice: NSObject {
             image = drawCacheImg(imageOfCross,type: NoticeType.error)
         case .info:
             image = drawCacheImg(imageOfInfo,type: NoticeType.info)
-        default:
-            break
+            //        default:
+            //            break
         }
         let checkmarkView = UIImageView(image: image)
         checkmarkView.frame = CGRectMake(27, 15, 36, 36)
@@ -159,15 +159,25 @@ class D3Notice: NSObject {
         label.textColor = UIColor.whiteColor()
         label.text = text
         label.textAlignment = NSTextAlignment.Center
+        label.sizeToFit()
+        
+        var mainViewWidth:CGFloat = 90.0
+        if label.frame.width + 50 > 90{
+            mainViewWidth = label.frame.width + 50.0
+        }
+        mainView.frame = CGRectMake(0, 0, mainViewWidth , mainView.frame.height)
+        checkmarkView.center.x = mainView.frame.width/2
+        label.center.x = mainView.frame.width/2
         mainView.addSubview(label)
         addView(mainView, time: time, autoClear: autoClear)
     }
     
     static func addView(mainView:UIView,time:NSTimeInterval,autoClear:Bool){
-        mainView.center = rv.center
+        mainView.center = window.center
         window.addSubview(mainView)
         notices.append(mainView)
-
+        //加动画,不喜欢删掉
+        //        mainView.pulse()
         if autoClear {
             NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "hideNotice:", userInfo: mainView, repeats: false)
         }
@@ -181,7 +191,7 @@ class D3Notice: NSObject {
     
     //下面是画图的
     class func draw(type: NoticeType) {
-        var checkmarkShapePath = UIBezierPath()
+        let checkmarkShapePath = UIBezierPath()
         // 先画个圈圈
         checkmarkShapePath.moveToPoint(CGPointMake(36, 18))
         checkmarkShapePath.addArcWithCenter(CGPointMake(18, 18), radius: 17.5, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
@@ -210,7 +220,7 @@ class D3Notice: NSObject {
             UIColor.whiteColor().setStroke()
             checkmarkShapePath.stroke()
             
-            var checkmarkShapePath = UIBezierPath()
+            let checkmarkShapePath = UIBezierPath()
             checkmarkShapePath.moveToPoint(CGPointMake(18, 27))
             checkmarkShapePath.addArcWithCenter(CGPointMake(18, 27), radius: 1, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
             checkmarkShapePath.closePath()
@@ -218,8 +228,8 @@ class D3Notice: NSObject {
             UIColor.whiteColor().setFill()
             checkmarkShapePath.fill()
             
-        default:
-            break
+            //        default:
+            //            break
         }
         
         UIColor.whiteColor().setStroke()
@@ -250,8 +260,8 @@ class D3Notice: NSObject {
             UIGraphicsEndImageContext()
             return imageOfInfo!
             
-        default:
-            break
+            //        default:
+            //            break
         }
     }
     
