@@ -6,7 +6,7 @@ D3Notice是用swift写的IOS的自定义AlertView。包括纯文字提示，成�
 ![此处输入图片的描述][1]
 
 
-  [1]: http://7vzpd0.com1.z0.glb.clouddn.com/111.gif  
+  [1]: http://7vzpd0.com1.z0.glb.clouddn.com/more.gif  
   
   
 ##使用
@@ -27,6 +27,8 @@ D3Notice是用swift写的IOS的自定义AlertView。包括纯文字提示，成�
 
     showNoticeText("text")
     
+    showProgressView(0.5, type: NoticeType.LineProgress)
+    
 ###不在UIViewController
 如果不是在UIViewController,使用方法：
 
@@ -44,7 +46,7 @@ D3Notice加动画效果已集成至D3View里的D3Notice
     platform :ios, '8.0'
     use_frameworks!
     
-    pod 'D3Notice', '~> 1.0.0'
+    pod 'D3Notice', '~> 2.0.0'
 
 swift调用framework需要import D3Notice
 
