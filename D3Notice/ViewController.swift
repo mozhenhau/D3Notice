@@ -12,7 +12,9 @@ class ViewController: UIViewController {
 
     
     @IBAction func clickClearNotcie(sender: AnyObject) {
-        clearAllNotice()
+        clearAll()
+        timer?.invalidate()
+        timer = nil
     }
     
     @IBAction func clickShowSuc(sender: AnyObject) {
@@ -21,7 +23,7 @@ class ViewController: UIViewController {
     
 
     @IBAction func clickShowSucNotDisapear(sender: AnyObject) {
-        showNoticeSuc("suc", time: D3Notice.longTime, autoClear: false)
+        showNoticeSuc("suc", time: D3NoticeManager.longTime, autoClear: false)
     }
 
     @IBAction func clickShowErr(sender: AnyObject) {
@@ -41,8 +43,31 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clickShowSuc2(sender: AnyObject) {
-        D3Notice.showNoticeWithText(NoticeType.success, text: "suc",time: D3Notice.longTime, autoClear: true)
+        D3NoticeManager.sharedInstance.showNoticeWithText(NoticeType.Success, text: "suc",time: D3NoticeManager.longTime, autoClear: true)
     }
     
+    var progress:Double = 0
+    var timer:NSTimer?
+    var type:NoticeType = NoticeType.CircleProgress
+    @IBAction func clickProgressCircle(sender: AnyObject) {
+        progress = 0
+        timer?.invalidate()
+        type = NoticeType.CircleProgress
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateProgress:"), userInfo: nil, repeats: true)
+    }
+    
+    
+    @IBAction func clickProgressLine(sender: AnyObject) {
+        progress = 0
+        timer?.invalidate()
+        type = NoticeType.LineProgress
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateProgress:"), userInfo: nil, repeats: true)
+    }
+    
+
+    func updateProgress(timer:NSTimer){
+        progress += 0.01
+        self.showProgressView(progress, type: type)
+    }
 }
 
