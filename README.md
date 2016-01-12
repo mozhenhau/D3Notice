@@ -2,7 +2,7 @@
 
 ##介绍
 纯代码实现，不需要加图  
-D3Notice是用swift写的IOS的自定义AlertView。包括纯文字提示，成功、失败、警告和菊花图。是扩展UIViewController的实现。  
+D3Notice是用swift写的IOS的自定义AlertView。包括纯文字提示，成功、失败、警告、菊花图和进度显示。是扩展UIViewController的实现。  
 ![此处输入图片的描述][1]
 
 
