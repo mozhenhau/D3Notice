@@ -125,7 +125,10 @@ class D3NoticeManager: NSObject {
         clearNotice()
         for view in notices{
             if view.tag == NoticeType.OnlyText.rawValue{
-                (view as! D3NoticeView).label.text = text
+                let noticeView = view as! D3NoticeView
+                
+                noticeView.setTextContent(text)
+                noticeView.center = window.center
                 showNotice(view, time: time, autoClear: autoClear)
                 return
             }
@@ -262,7 +265,7 @@ class D3NoticeView:UIView{
         label.font = UIFont.systemFontOfSize(13)
         label.textAlignment = NSTextAlignment.Center
         label.textColor = UIColor.whiteColor()
-        label.sizeToFit()
+        label.sizeToFix()
         self.addSubview(label)
         self.frame = CGRectMake(0, 0, label.frame.width + 50 , label.frame.height + 30)
         
@@ -292,14 +295,20 @@ class D3NoticeView:UIView{
     func setContent(type: NoticeType,text:String){
         checkmarkView.image = self.draw(type)
         label.text = text
-        label.sizeToFit()
+        label.sizeToFixWidth()
         
-        var mainViewWidth:CGFloat = 90.0
-        if label.frame.width + 50 > 90{
-            mainViewWidth = label.frame.width + 50.0
-        }
+        let mainViewWidth:CGFloat = label.frame.width + 50 > 90 ? label.frame.width + 50.0 : 90
+        
         self.frame = CGRectMake(0, 0, mainViewWidth , self.frame.height)
         checkmarkView.center.x = self.frame.width/2
+        label.center.x = self.frame.width/2
+    }
+    
+    func setTextContent(text:String){
+        label.text = text
+        label.sizeToFix()
+        
+        self.frame = CGRectMake(0, 0, label.frame.width + 50 , label.frame.height + 30)
         label.center.x = self.frame.width/2
     }
     
@@ -480,6 +489,24 @@ class D3ProgressView: UIView {
         
         // restore the context
         CGContextRestoreGState(context) ;
+    }
+    
+}
+
+
+extension UILabel{
+    func sizeToFixWidth(){
+        let fitString = self.text! as NSString
+        let maxSize = CGSizeMake(CGFloat.max, self.bounds.height)
+        let fitWidth = fitString.boundingRectWithSize(maxSize, options: NSStringDrawingOptions.UsesFontLeading, attributes: [NSFontAttributeName:self.font], context: nil).width
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, fitWidth, self.frame.height)
+    }
+    
+    func sizeToFix(){
+        let fitString = self.text! as NSString
+        let maxSize = CGSizeMake(CGFloat.max, self.bounds.height)
+        let fitSize = fitString.boundingRectWithSize(maxSize, options: NSStringDrawingOptions.UsesFontLeading, attributes: [NSFontAttributeName:self.font], context: nil)
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, fitSize.width, fitSize.height)
     }
     
 }
